@@ -10,19 +10,15 @@
     <form method="post">
         <label>Trapetsi ülemine alus (a): </label>
         <input type="number" step="0.1" name="a" required><br><br>
-        
         <label>Trapetsi alumine alus (b): </label>
         <input type="number" step="0.1" name="b" required><br><br>
-        
         <label>Trapetsi kõrgus (h): </label>
         <input type="number" step="0.1" name="h" required><br><br>
-        
         <label>Rombi külg (s): </label>
         <input type="number" step="0.1" name="s" required><br><br>
         
         <input type="submit" value="Arvuta">
     </form>
-
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $a = floatval($_POST["a"]);
@@ -41,3 +37,4 @@
     ?>
 </body>
 </html>
+
