@@ -27,8 +27,6 @@
         }
     }
     ?>
-
-    <!-- Vanuse võrdlus -->
     <h3>Vanuse võrdlus</h3>
     <form method="post">
         <input type="number" name="vanus1" class="form-control mb-2" placeholder="Esimese inimese vanus" required>
@@ -48,8 +46,6 @@
         }
     }
     ?>
-
-    <!-- Ristkülik või ruut -->
     <h3>Ristkülik või ruut</h3>
     <form method="post">
         <input type="number" name="side1" class="form-control mb-2" placeholder="Külg 1" required>
@@ -67,16 +63,12 @@
         }
     }
     ?>
-
-    <!-- Ristkülik või ruut II (joonistamine) -->
     <h3>Ristkülik või ruut II</h3>
     <?php
     if (isset($_POST["shape"])) {
         echo "<div style='width: {$s1}px; height: {$s2}px; background-color: lightblue; margin: 10px;'></div>";
     }
     ?>
-
-    <!-- Juubel -->
     <h3>Juubel</h3>
     <form method="post">
         <input type="number" name="year" class="form-control mb-2" placeholder="Sisesta sünniaasta" required>
@@ -94,8 +86,6 @@
         }
     }
     ?>
-
-    <!-- Hinne (switch) -->
     <h3>Hinne</h3>
     <form method="post">
         <input type="number" name="points" class="form-control mb-2" placeholder="Sisesta KT punktid" required>
@@ -121,3 +111,4 @@
     ?>
 </body>
 </html>
+
