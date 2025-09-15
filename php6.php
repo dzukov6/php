@@ -1,107 +1,72 @@
-<!DOCTYPE html>
-<html lang="et">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP</title>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
-    <h1>PHP</h1>
-    
-    <h2>Arvud 1-100</h2>
-    <?php
-    echo "<p>";
-    for ($i = 1; $i <= 100; $i++) {
-        echo "$i. ";
-        if ($i % 10 == 0) {
-            echo "<br>";
-        }
-    }
-    echo "</p>";
-    ?>
+    <body>
+        <div class="container">
+            <h1>Harjutus 6</h1>
+            <?php
+                for ($i = 1; $i <= 100; $i++) {
+                    echo $i;
+                    if ($i % 10){
+                        echo ". ";
+                    } else {
+                        echo "<br><br>";
+                    }
+                }
 
-    <h2>Tarnidest horisontaalne rida</h2>
-    <?php
-    echo "<p>**********</p>";
-    ?>
+                for ($i = 1; $i <= 10; $i++) {
+                    echo "*";
+                }
 
-    <h2>Tarnidest vertikaalne rida</h2>
-    <?php
-    echo "<p>";
-    for ($i = 0; $i < 10; $i++) {
-        echo "*<br>";
-    }
-    echo "</p>";
-    ?>
+                for ($i = 1; $i <= 10; $i++) {
+                    echo "<br>*";
+                }
 
+                echo "<br>";
+                echo '<form action="#" method="get"> <input type="number" name="ruut" id="ruut"> <input type="submit" value="ruudusta"> </form>';
+                for ($i = 1; $i <= $_GET['ruut']; $i++) {
+                    echo "<br>";
+                    for ($k = 1; $k <= $_GET['ruut']; $k++) {
+                        echo "* ";
+                    }
+                    
+                }
 
-    <h2>Tarnidest ruut</h2>
-    <form method="get">
-        <label for="size">Sisesta ruudu suurus:</label>
-        <input type="number" name="size" id="size" min="1" required>
-        <input type="submit" value="Loo ruut">
-    </form>
-    <?php
-    if (isset($_GET['size'])) {
-        $size = (int)$_GET['size'];
-        echo "<p>";
-        for ($i = 0; $i < $size; $i++) {
-            for ($j = 0; $j < $size; $j++) {
-                echo "* ";
-            }
-            echo "<br>";
-        }
-        echo "</p>";
-    }
-    ?>
+                for ($i = 10; $i >= 1; $i--) {
+                    if ($i % 2 == 0) {
+                        echo "<br>".$i;
+                    }
+                }
+                echo "<br> <br>";
 
-    <h2>Kahanevad paarisarvud 10-1</h2>
-    <?php
-    echo "<p>";
-    for ($i = 10; $i >= 1; $i--) {
-        if ($i % 2 == 0) {
-            echo "$i<br>";
-        }
-    }
-    echo "</p>";
-    ?>
+                for ($i = 3; $i <= 100; $i += 3) {
+                    echo " ".$i;
+                }
+                echo "<br><br>";
 
-    <h2>Kolmega jagunevad arvud 1-100</h2>
-    <?php
-    echo "<p>";
-    for ($i = 1; $i <= 100; $i++) {
-        if ($i % 3 == 0) {
-            echo "$i ";
-        }
-    }
-    echo "</p>";
-    ?>
+                $poisid = array("Mario", "Rain", "Valdo");
+                $tydrukud = array("Diana", "Claudia", "Mari");
+                for ($i = 0; $i < count($poisid); $i++) {
+                    echo $poisid[$i]." ".$tydrukud[$i]."<br>"; 
+                }
+                echo "<br><br>";
+            ?>
+        </div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
 
-    <h2>Poiste ja tudrukute paarid</h2>
-    <?php
-    $poised = ["Jaan", "Mati", "Kaur", "Peeter"];
-    $tydrukud = ["Liis", "Mari", "Anu", "Kati"];
-
-    echo "<p>";
-    for ($i = 0; $i < count($poised); $i++) {
-        echo "Poiss: " . $poised[$i] . ", Tudruk: " . $tydrukud[$i] . "<br>";
-    }
-    echo "</p>";
-    ?>
-
-    <h2>Poiste ja tudrukute suvalised paarid</h2>
-    <?php
-    $poised_koopiad = $poised;
-    $tydrukud_koopiad = $tydrukud;
-
-    shuffle($poised);
-    shuffle($tydrukud);
-
-    echo "<p>";
-    for ($i = 0; $i < count($poised); $i++) {
-        echo "Poiss: " . $poised[$i] . ", Tudruk: " . $tydrukud[$i] . "<br>";
-    }
-    echo "</p>";
-    ?>
-</body>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
 </html>
