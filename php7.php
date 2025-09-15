@@ -1,111 +1,139 @@
-<!DOCTYPE html>
-<html lang="et">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
-    <div class="container">
-        <h1>PHP</h1>
+    <body>
+        <div class="container">
+            <h1>Harjutus 7</h1>
+            <?php
+                /*
+                    07
+                    Hugo-Hendrik Vainlu
+                    21.04.2024
+                */
 
-        <h2>Tervitus</h2>
-        <?php
-        function tervitus() {
-            echo "<p>Tere päiksekesekene!</p>";
-        }
-        tervitus();
-        ?>
+                function Tervitus(){
+                    echo "Tere päiksekesekene!";
+                }
+                Tervitus();
+                echo "<br><br>";
 
-        <h2>Liitu uudiskirjaga</h2>
-        <?php
-        function uudiskiri() {
-            echo '<form class="form-inline">
-                    <label for="email">E-post:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Sisesta oma e-post" required>
-                    <button type="submit" class="btn btn-primary">Liitu</button>
-                  </form>';
-        }
-        uudiskiri();
-        ?>
+                function Uudiskiri(){
+                    echo "<div class='form-group'>
+                        <label for='exampleInputEmail1'>Email aadress</label>
+                        <input type='email' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' placeholder='Sisesta email'>
+                        <small id='emailHelp' class='form-text text-muted'>Ei jaga teie emaili võõrastele</small>
+                        <button type='submit' class='btn btn-primary'>Liitu</button></div>";
+                }
+                Uudiskiri();
+                echo "<br><br>";
 
-        <h2>Kasutajanimi ja email</h2>
-        <?php
-        function kasutajanimiEmail($kasutajanimi) {
-            $kasutajanimi = strtolower($kasutajanimi);
-            $email = $kasutajanimi . "@hkhk.edu.ee";
-            echo "<p>Kasutajanimi: $kasutajanimi</p>";
-            echo "<p>Email: $email</p>";
-        }
-        kasutajanimiEmail("MatiTamm");
-        ?>
+                function Kasutaja($kasutaja){
+                    echo strtolower($kasutaja)."@hkhk.edu.ee";
+                    echo "<br>";
+                    echo substr(sha1(mt_rand()),5,7);
+                }
+                Kasutaja("huggster");
+                echo "<br><br>";
 
-        <h2>7-kohaline kood</h2>
-        <?php
-        function generateKood() {
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $randomString = '';
-            for ($i = 0; $i < 7; $i++) {
-                $randomString .= $characters[rand(0, strlen($characters) - 1)];
-            }
-            echo "<p>Kood: $randomString</p>";
-        }
-        generateKood();
-        ?>
+                function Arvud(){
+                    echo "<form action='#' method='get'>
+                        <input type='number' name='min' id='min' value='min' />
+                        <input type='number' name='max' id='max' value='max' />
+                        <input type='number' name='step' id='step' value='step' />
+                        <input type='submit' value='Saada' />
+                        </form>";
+                    if (isset($_GET['min']) && isset($_GET['max']) && isset($_GET['step'])){
+                        for ($i = $_GET['min']; $i <= $_GET['max']; $i+=$_GET['step']) {
+                            echo $i." ";
+                        }
+                    }
+                }
+                Arvud();
+                echo "<br><br>";
 
-        <h2>Arvud</h2>
-        <?php
-        function arvud($start, $end, $step = 1) {
-            for ($i = $start; $i <= $end; $i += $step) {
-                echo "$i ";
-            }
-        }
-        arvud(2, 8);
-        echo "<br>";
-        arvud(2, 8, 3);
-        ?>
+                function Pindala($kylg1, $kylg2){
+                    echo "Ristküliku pindala on ".$kylg1 * $kylg2;
+                }
+                echo "<form action='#' method='get'>
+                    <input type='number' name='kylg1' id='kylg1' value='kylg1' />
+                    <input type='number' name='kylg2' id='kylg2' value='kylg2' />
+                    <input type='submit' value='Saada' />
+                    </form>";
+                if (isset($_GET['kylg1']) && isset($_GET['kylg2'])){
+                    Pindala($_GET['kylg1'], $_GET['kylg2']);
+                }
+                echo "<br><br>";
 
-        <h2>Ristküliku pindala</h2>
-        <?php
-        function ristkylikPindala($pikkus, $laius) {
-            $pindala = $pikkus * $laius;
-            echo "<p>Ristküliku pindala: $pindala</p>";
-        }
-        ristkylikPindala(5, 8);
-        ?>
+                function isikukood(){
+                    echo "<form action='#' method='get'>
+                        <input type='number' name='isikukood' id='isikukood' value='isikukood' />
+                        <input type='submit' value='Saada' />
+                        </form>";
+                    if (isset($_GET['isikukood'])){
+                        if (strlen($_GET['isikukood']) == 11){
+                            echo "Isikukood on korrektne";
+                        } else {
+                            echo "Isikukood on vale";
+                        }
+                        switch (substr($_GET['isikukood'], 0, 1)){
+                            case 1:
+                                $aasta = "18";
+                                $sugu = "mees";
+                                break;
+                            case 2:
+                                $aasta = "18";
+                                $sugu = "naine";
+                                break;
+                            case 3:
+                                $aasta = "19";
+                                $sugu = "mees";
+                                break;
+                            case 4:
+                                $aasta = "19";
+                                $sugu = "naine";
+                                break;
+                            case 5:
+                                $aasta = "20";
+                                $sugu = "mees";
+                                break;
+                            case 6:
+                                $aasta = "20";
+                                $sugu = "naine";
+                                break;
+                            default:
+                                echo "Vale isikukood";
+                                break;
+                        }
+                        echo "<br> Sugu: ".$sugu;
+                        echo "<br> Sünd: ".$aasta.substr($_GET['isikukood'], 1, 2);
+                    }
+                }
+                isikukood();
+                echo "<br><br>";
 
-        <h2>Isikukood</h2>
-        <?php
-        function isikukood($kood) {
-            if (strlen($kood) == 11) {
-                $sugu = ($kood[0] % 2 == 0) ? 'Naine' : 'Mees';
-                $sund = "Sünniaeg: " . substr($kood, 1, 2) . "." . substr($kood, 3, 2) . "." . "19" . substr($kood, 5, 2);
-                echo "<p>Isikukood on õige pikkusega.</p>";
-                echo "<p>Sugu: $sugu</p>";
-                echo "<p>$sund</p>";
-            } else {
-                echo "<p>Isikukood ei ole õige pikkusega.</p>";
-            }
-        }
-        isikukood("39410200315");
-        ?>
-
-        <h2>Head mõtted</h2>
-        <?php
-        function headMotted() {
-            $alus = ["Tere", "Kuidas", "Miks"];
-            $odelis = ["on", "võib", "tundub"];
-            $sihitis = ["täna", "ilma", "meil"];
-
-            $randomAlus = $alus[array_rand($alus)];
-            $randomOdelis = $odelis[array_rand($odelis)];
-            $randomSihitis = $sihitis[array_rand($sihitis)];
-
-            echo "<p>$randomAlus $randomOdelis $randomSihitis.</p>";
-        }
-        headMotted();
-        ?>
-    </div>
-</body>
+                function Motted(){
+                    $alus = array("kool", "auto", "mario");
+                    $oeldis = array("on", "ei ole", "võibolla");
+                    $sihitis = array("kiire", "lahe", "ilus");
+                    echo $alus[rand(0,2)]." ".$oeldis[rand(0,2)]." ".$sihitis[rand(0,2)];
+                }
+                Motted();
+            ?>
+        </div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
 </html>
