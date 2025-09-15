@@ -10,14 +10,8 @@
         <div class="container">
             <h1>Harjutus 7</h1>
             <?php
-                /*
-                    07
-                    Hugo-Hendrik Vainlu
-                    21.04.2024
-                */
-
                 function Tervitus(){
-                    echo "Tere päiksekesekene!";
+                    echo "Tere!";
                 }
                 Tervitus();
                 echo "<br><br>";
@@ -137,3 +131,4 @@
         ></script>
     </body>
 </html>
+
